@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RandomGenerator</string>
+    <string name="txt_end">End number:</string>
+    <string name="txt_start">Start number:</string>
+    <string name="txt_rand">Random number:</string>
+    <string name="txt_tap">Tap on dice for result</string>
+    <string name="dice">image of dice</string>
+</resources>
