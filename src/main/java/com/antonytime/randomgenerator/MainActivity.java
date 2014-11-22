@@ -31,30 +31,34 @@ public class MainActivity extends Activity {
 
     public void generate(View view){
 
+        if(startNum.getText().length() != 0 && endNum.getText().length() != 0){
 
+            int max = Integer.parseInt(endNum.getText().toString());
+            int min = Integer.parseInt(startNum.getText().toString());
+            int result = 0;
 
-        int max = Integer.parseInt(endNum.getText().toString());
-        int min = Integer.parseInt(startNum.getText().toString());
-        int result = 0;
+            Random generator = new Random();
 
-        Random generator = new Random();
+            if (min < max){
 
-        if (min < max){
+                if (touches < 1){
+                    image.setImageResource(R.drawable.dice_red);
+                    touches++;
+                } else {
+                    touches = 0;
+                    image.setImageResource(R.drawable.dice);
+                }
 
-            if (touches < 1){
-                image.setImageResource(R.drawable.dice_red);
-                touches++;
+                result = generator.nextInt(max - min) + min;
+
             } else {
-                touches = 0;
-                image.setImageResource(R.drawable.dice);
+                Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
             }
 
-            result = generator.nextInt(max - min) + min;
-
+            randomNumber.setText(String.valueOf(result));
         } else {
             Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
         }
 
-        randomNumber.setText(String.valueOf(result));
     }
 }
