@@ -1,8 +1,14 @@
 package com.antonytime.randomgenerator;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +35,31 @@ public class MainActivity extends Activity {
         image = (ImageView) findViewById(R.id.imageView);
     }
 
+    public void playSoundOnTouch(){
+        MediaPlayer mp = MediaPlayer.create(this,R.raw.dice);
+        mp.start();
+    }
+
+    public void shakeImageOnTouch(){
+        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        findViewById(R.id.imageView).startAnimation(shake);
+    }
+
+    public void vibrateOnTouch(){
+        Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibe.vibrate(100);
+    }
+
+    public void changeImageOnTouch(){
+        if (touches < 1){
+            image.setImageResource(R.drawable.dice_red);
+            touches++;
+        } else {
+            touches = 0;
+            image.setImageResource(R.drawable.dice);
+        }
+    }
+
     public void generate(View view){
 
         if(startNum.getText().length() != 0 && endNum.getText().length() != 0){
@@ -41,13 +72,13 @@ public class MainActivity extends Activity {
 
             if (min < max){
 
-                if (touches < 1){
-                    image.setImageResource(R.drawable.dice_red);
-                    touches++;
-                } else {
-                    touches = 0;
-                    image.setImageResource(R.drawable.dice);
-                }
+                playSoundOnTouch();
+
+                shakeImageOnTouch();
+
+                vibrateOnTouch();
+
+                changeImageOnTouch();
 
                 result = generator.nextInt(max - min) + min;
 
@@ -56,6 +87,7 @@ public class MainActivity extends Activity {
             }
 
             randomNumber.setText(String.valueOf(result));
+
         } else {
             Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
         }
