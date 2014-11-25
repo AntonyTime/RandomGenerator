@@ -2,17 +2,13 @@ package com.antonytime.randomgenerator;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.util.Random;
 
@@ -21,6 +17,8 @@ public class MainActivity extends Activity {
     private EditText startNum;
     private EditText endNum;
     private TextView randomNumber;
+    private Switch startSwitch;
+    private Switch endSwitch;
     private ImageView image;
     private int touches = 0;
 
@@ -33,6 +31,8 @@ public class MainActivity extends Activity {
         endNum = (EditText) findViewById(R.id.etEndNum);
         randomNumber = (TextView) findViewById(R.id.txtResult);
         image = (ImageView) findViewById(R.id.imageView);
+        startSwitch = (Switch) findViewById(R.id.switchStartRange);
+        endSwitch = (Switch) findViewById(R.id.switchEndRange);
     }
 
     public void playSoundOnTouch(){
@@ -68,7 +68,7 @@ public class MainActivity extends Activity {
             int min = Integer.parseInt(startNum.getText().toString());
             int result = 0;
 
-            Random generator = new Random();
+            Random random = new Random();
 
             if (min < max){
 
@@ -80,7 +80,24 @@ public class MainActivity extends Activity {
 
                 changeImageOnTouch();
 
-                result = generator.nextInt(max - min) + min;
+                if((startSwitch.isChecked() && !endSwitch.isChecked())){
+                    result = random.nextInt(max - min) + min;
+                }
+                if((endSwitch.isChecked() && !startSwitch.isChecked())){
+                    min = min + 1;
+                    result = random.nextInt(max - min + 1) + min;
+                }
+                if((startSwitch.isChecked() && endSwitch.isChecked())){
+                    result = random.nextInt(max - min + 1) + min;
+                }
+                if ((!startSwitch.isChecked() && !endSwitch.isChecked())) {
+                    min = min + 1;
+                    try{
+                        result = random.nextInt(max - min) + min;
+                    } catch (Exception exp){
+                        Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
+                    }
+                }
 
             } else {
                 Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
