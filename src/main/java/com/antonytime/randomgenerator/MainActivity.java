@@ -35,22 +35,22 @@ public class MainActivity extends Activity {
         endSwitch = (Switch) findViewById(R.id.switchEndRange);
     }
 
-    public void playSoundOnTouch(){
+    public void playSoundOnClick(){
         MediaPlayer mp = MediaPlayer.create(this,R.raw.dice);
         mp.start();
     }
 
-    public void shakeImageOnTouch(){
+    public void shakeImageOnClick(){
         Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
         findViewById(R.id.imageView).startAnimation(shake);
     }
 
-    public void vibrateOnTouch(){
+    public void vibrateOnClick(){
         Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         vibe.vibrate(100);
     }
 
-    public void changeImageOnTouch(){
+    public void changeImageOnClick(){
         if (touches < 1){
             image.setImageResource(R.drawable.dice_red);
             touches++;
@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void generate(View view){
+    public void onClickGenerate(View view){
 
         if(startNum.getText().length() != 0 && endNum.getText().length() != 0){
 
@@ -71,32 +71,44 @@ public class MainActivity extends Activity {
             Random random = new Random();
 
             if (min < max){
+                if (max - min != 1){
 
-                playSoundOnTouch();
+                    playSoundOnClick();
 
-                shakeImageOnTouch();
+                    shakeImageOnClick();
 
-                vibrateOnTouch();
+                    vibrateOnClick();
 
-                changeImageOnTouch();
+                    changeImageOnClick();
 
-                if((startSwitch.isChecked() && !endSwitch.isChecked())){
-                    result = random.nextInt(max - min) + min;
-                }
-                if((endSwitch.isChecked() && !startSwitch.isChecked())){
-                    min = min + 1;
-                    result = random.nextInt(max - min + 1) + min;
-                }
-                if((startSwitch.isChecked() && endSwitch.isChecked())){
-                    result = random.nextInt(max - min + 1) + min;
-                }
-                if ((!startSwitch.isChecked() && !endSwitch.isChecked())) {
-                    min = min + 1;
-                    try{
+                    if((startSwitch.isChecked() && !endSwitch.isChecked())){
                         result = random.nextInt(max - min) + min;
-                    } catch (Exception exp){
-                        Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
                     }
+                    if((!startSwitch.isChecked()) && endSwitch.isChecked()){
+                        min = min + 1;
+                        result = random.nextInt(max - min + 1) + min;
+                    }
+                    if ((!startSwitch.isChecked() && !endSwitch.isChecked())) {
+                        min = min + 1;
+                        result = random.nextInt(max - min) + min;
+                    }
+                }
+
+                else if((startSwitch.isChecked() && endSwitch.isChecked())){
+
+                    playSoundOnClick();
+
+                    shakeImageOnClick();
+
+                    vibrateOnClick();
+
+                    changeImageOnClick();
+
+                    result = random.nextInt(max - min + 1) + min;
+                }
+
+                else {
+                    Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
                 }
 
             } else {
