@@ -3,14 +3,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:padding="30dp" android:background="#ff97d0ff">
+              android:layout_height="match_parent"
+              android:padding="30dp"
+              android:background="#ff97d0ff">
 
     <TextView
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge" android:text="@string/txt_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/txt_start"
             android:id="@+id/txtStart"
-            android:layout_toStartOf="@+id/txtStart"
-            android:layout_alignBottom="@+id/etStartNum" android:layout_alignParentLeft="true"
+            android:layout_alignBottom="@+id/etStartNum"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
@@ -18,7 +22,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/txt_end"
             android:id="@+id/txtEnd"
-            android:layout_alignBottom="@+id/etEndNum" android:layout_alignParentLeft="true"
+            android:layout_alignBottom="@+id/etEndNum"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
@@ -26,50 +31,84 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/txt_tap"
             android:id="@+id/txtTap"
-            android:layout_below="@+id/switchEndRange" android:layout_centerHorizontal="true"/>
+            android:layout_above="@+id/txtRandNumber"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="33dp"/>
     <EditText
             android:layout_width="142dp"
             android:layout_height="wrap_content"
             android:id="@+id/etStartNum"
-            android:layout_alignParentRight="true" android:layout_alignParentEnd="true"
-            android:gravity="center" android:inputType="numberSigned" android:text="1"/>
+            android:gravity="center"
+            android:inputType="numberSigned"
+            android:text="@string/txt_1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/txtRandNumber"
+            android:layout_toEndOf="@+id/txtRandNumber"/>
     <EditText
             android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:id="@+id/etEndNum"
-            android:layout_below="@+id/txtStart" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:inputType="numberSigned" android:layout_alignLeft="@+id/etStartNum"
-            android:layout_alignStart="@+id/etStartNum" android:gravity="center" android:text="10"/>
+            android:layout_below="@+id/txtStart"
+            android:inputType="numberSigned"
+            android:layout_alignLeft="@+id/etStartNum"
+            android:layout_alignStart="@+id/etStartNum"
+            android:gravity="center"
+            android:text="@string/txt_10"
+            android:layout_alignRight="@+id/etStartNum"
+            android:layout_alignEnd="@+id/etStartNum"/>
     <TextView
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge" android:text="@string/txt_rand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/txt_rand"
             android:id="@+id/txtRandNumber"
-            android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/txtResult" android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:id="@+id/txtResult"
+            android:textColor="#ffff423a"
+            android:layout_toEndOf="@+id/txtTap"
+            android:text="@string/txt_result"
+            android:layout_below="@+id/txtTap"
+            android:layout_centerHorizontal="true"/>
     <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Including start range"
-            android:id="@+id/switchStartRange" android:layout_below="@+id/txtEnd" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:checked="false"/>
+            android:text="@string/txt_including_start"
+            android:id="@+id/switchStartRange"
+            android:checked="false"
+            android:layout_toEndOf="@+id/etEndNum"
+            android:layout_above="@+id/switchEndRange"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
     <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Including end range"
-            android:id="@+id/switchEndRange" android:layout_below="@+id/switchStartRange" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:checked="false"/>
+            android:text="@string/txt_including_end"
+            android:id="@+id/switchEndRange"
+            android:checked="false"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/switchStartRange"
+            android:layout_alignEnd="@+id/switchStartRange"/>
     <ImageView
-            android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageView"
-            android:src="@drawable/dice" android:onClick="onClickGenerate" android:contentDescription="@string/dice"
-            android:layout_centerHorizontal="true" android:layout_below="@+id/txtTap"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/dice"
+            android:onClick="onClickGenerate"
+            android:contentDescription="@string/dice"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/etStartNum"
+            android:layout_toEndOf="@+id/etStartNum"
+            android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
