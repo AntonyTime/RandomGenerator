@@ -3,7 +3,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:padding="30dp" android:background="#ff97d0ff">
+              android:layout_height="match_parent"
+              android:padding="30dp" android:background="#ff97d0ff">
 
     <TextView
             android:layout_width="wrap_content"
@@ -11,7 +12,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/txt_start"
             android:id="@+id/txtStart"
-            android:layout_alignBottom="@+id/etStartNum" android:layout_alignParentLeft="true"
+            android:layout_alignBottom="@+id/etStartNum"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
@@ -19,7 +21,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/txt_end"
             android:id="@+id/txtEnd"
-            android:layout_alignBottom="@+id/etEndNum" android:layout_alignParentLeft="true"
+            android:layout_alignBottom="@+id/etEndNum"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
@@ -37,7 +40,7 @@
             android:layout_alignParentEnd="true"
             android:gravity="center"
             android:inputType="numberSigned"
-            android:text="1"/>
+            android:text="@string/txt_1"/>
     <EditText
             android:layout_width="139dp"
             android:layout_height="wrap_content"
@@ -48,7 +51,8 @@
             android:inputType="numberSigned"
             android:layout_alignLeft="@+id/etStartNum"
             android:layout_alignStart="@+id/etStartNum"
-            android:gravity="center" android:text="10"/>
+            android:gravity="center"
+            android:text="@string/txt_10"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,7 +69,9 @@
             android:id="@+id/txtResult"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:textColor="#ffff423a"/>
+            android:layout_alignParentEnd="true"
+            android:textColor="#ffff423a"
+            android:text="@string/txt_result"/>
     <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
