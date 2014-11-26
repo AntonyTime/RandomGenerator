@@ -7,4 +7,7 @@
     <string name="dice">image of dice</string>
     <string name="txt_including_start">Including start range</string>
     <string name="txt_including_end">Including end range</string>
+    <string name="txt_result">Result</string>
+    <string name="txt_1">1</string>
+    <string name="txt_10">10</string>
 </resources>
