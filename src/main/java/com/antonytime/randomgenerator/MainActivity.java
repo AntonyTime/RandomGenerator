@@ -92,34 +92,27 @@ public class MainActivity extends Activity {
                         min = min + 1;
                         result = random.nextInt(max - min) + min;
                     }
-                }
+                    if((startSwitch.isChecked() && endSwitch.isChecked())){
+                        result = random.nextInt(max - min + 1) + min;
+                    }
+                } else {
 
-                else if((startSwitch.isChecked() && endSwitch.isChecked())){
-
-                    playSoundOnClick();
-
-                    shakeImageOnClick();
-
-                    vibrateOnClick();
-
-                    changeImageOnClick();
-
-                    result = random.nextInt(max - min + 1) + min;
-                }
-
-                else {
                     Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
+
                 }
 
             } else {
+
                 Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
+
             }
 
             randomNumber.setText(String.valueOf(result));
 
         } else {
-            Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
-        }
 
+            Toast.makeText(this,"Invalid range",Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
