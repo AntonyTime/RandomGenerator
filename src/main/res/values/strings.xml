@@ -5,4 +5,6 @@
     <string name="txt_rand">Random number:</string>
     <string name="txt_tap">Tap on dice for result</string>
     <string name="dice">image of dice</string>
+    <string name="txt_including_start">Including start range</string>
+    <string name="txt_including_end">Including end range</string>
 </resources>
