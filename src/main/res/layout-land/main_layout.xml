@@ -4,8 +4,8 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:padding="30dp"
-              android:background="#ff97d0ff">
+              android:background="#ff97d0ff"
+              android:padding="10dp">
 
     <TextView
             android:layout_width="wrap_content"
@@ -42,28 +42,27 @@
             android:gravity="center"
             android:inputType="numberSigned"
             android:text="@string/txt_1"
+            android:layout_toEndOf="@+id/txtStart"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/txtRandNumber"
-            android:layout_toEndOf="@+id/txtRandNumber"/>
+            android:layout_toRightOf="@+id/txtStart"/>
     <EditText
             android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:id="@+id/etEndNum"
             android:layout_below="@+id/txtStart"
             android:inputType="numberSigned"
-            android:layout_alignLeft="@+id/etStartNum"
-            android:layout_alignStart="@+id/etStartNum"
             android:gravity="center"
             android:text="@string/txt_10"
             android:layout_alignRight="@+id/etStartNum"
-            android:layout_alignEnd="@+id/etStartNum"/>
+            android:layout_toRightOf="@+id/txtEnd"
+            android:layout_toEndOf="@+id/txtEnd"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/txt_rand"
             android:id="@+id/txtRandNumber"
-            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <TextView
@@ -72,10 +71,15 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/txtResult"
             android:textColor="#ffff423a"
-            android:layout_toEndOf="@+id/txtTap"
+            android:layout_toEndOf="@+id/txtRandNumber"
             android:text="@string/txt_result"
-            android:layout_below="@+id/txtTap"
-            android:layout_centerHorizontal="true"/>
+            android:enabled="false"
+            android:focusable="false"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/txtRandNumber"
+            android:gravity="end"
+            android:layout_toStartOf="@+id/imageView"
+            android:layout_toLeftOf="@+id/imageView"/>
     <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,11 +108,10 @@
             android:src="@drawable/dice"
             android:onClick="onClickGenerate"
             android:contentDescription="@string/dice"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/etStartNum"
             android:layout_toEndOf="@+id/etStartNum"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignTop="@+id/etStartNum"
+            android:layout_toRightOf="@+id/etStartNum"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
