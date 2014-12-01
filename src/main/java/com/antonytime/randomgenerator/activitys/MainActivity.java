@@ -10,11 +10,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.antonytime.randomgenerator.R;
-import com.antonytime.randomgenerator.interfaces.ImageEffects;
 
 import java.util.Random;
 
-public class MainActivity extends Activity implements ImageEffects{
+public class MainActivity extends Activity{
 
     private EditText startNum;
     private EditText endNum;
